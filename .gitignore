@@ -12,3 +12,5 @@ node_modules/
 
 # Editor
 .vscode/
+
+/generated/prisma
