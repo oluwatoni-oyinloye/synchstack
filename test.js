@@ -11,9 +11,10 @@ const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
 
 async function main() {
+  const email = `test-${Date.now()}@example.com`;
   const user = await prisma.user.create({
     data: {
-      email: 'test@example.com',
+      email: email,
       name: 'Test User',
     },
   });

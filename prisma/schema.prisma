@@ -1,14 +1,51 @@
 generator client {
   provider = "prisma-client-js"
+
 }
 
 datasource db {
   provider = "postgresql"
 }
 
+
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
+  id        String    @id @default(uuid())
+  email     String    @unique
   name      String
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
+
+  projects  Project[]
+}
+
+model Project {
+  id        String    @id @default(uuid())
+  name      String
+  createdAt DateTime  @default(now())
+
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  services  Service[]
+}
+
+model Service {
+  id         String     @id @default(uuid())
+  name       String
+  type       String
+  createdAt  DateTime   @default(now())
+
+  projectId  String
+  project    Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  deployments Deployment[]
+}
+
+model Deployment {
+  id         String   @id @default(uuid())
+  version    String
+  status     String
+  deployedAt DateTime @default(now())
+
+  serviceId  String
+  service    Service  @relation(fields: [serviceId], references: [id], onDelete: Cascade)
 }
