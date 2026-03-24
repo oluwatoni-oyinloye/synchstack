@@ -40,8 +40,8 @@ Microservices management platform with AI-powered insights.
 6. **View API docs:**
    Open http://localhost:3001/docs
 
-### Next: Phase 2c
-Connect Prisma to Express endpoints and add APIs for Projects, Services, Deployments.
+### Next: Phase 3B
+Basic AI - Read-Only Insights 
 
 ## Tech Stack
 - Node.js 22.22.0
